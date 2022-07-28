@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mycars_tests.tests &mdash; MJCars 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> MJCars
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MJCars</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>mycars_tests.tests</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for mycars_tests.tests</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django.contrib.staticfiles.testing</span> <span class="kn">import</span> <span class="n">StaticLiveServerTestCase</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">page</span>
+<span class="kn">from</span> <span class="nn">htmx.models</span> <span class="kn">import</span> <span class="n">User</span><span class="p">,</span> <span class="n">Car</span>
+       
+
+
+<div class="viewcode-block" id="MJCarsTest"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest">[docs]</a><span class="k">class</span> <span class="nc">MJCarsTest</span><span class="p">(</span><span class="n">StaticLiveServerTestCase</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This class will include test methods neccessary to perform functional tests using Selenium web driver.</span>
+<span class="sd">    All test cases are executed on Google Chrome.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="MJCarsTest.setUp"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is called before every test function to set up any objects</span>
+<span class="sd">        neccessary to perform a specified task. </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span>  <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="s1">&#39;tests_selenium/chromedriver.exe&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;testuser&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s1">&#39;12345&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">car</span> <span class="o">=</span> <span class="n">Car</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">producer</span><span class="o">=</span><span class="s1">&#39;porshe&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">car</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="MJCarsTest.tearDown"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is called after every test function to delete existing objects</span>
+<span class="sd">        neccessary to perform a specified task. </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">car</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="MJCarsTest.test_home_page"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest.test_home_page">[docs]</a>    <span class="k">def</span> <span class="nf">test_home_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if home page behaves as expected.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="p">)</span>
+        <span class="n">home_page</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">HomePage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">home_page</span><span class="o">.</span><span class="n">is_title_matches</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">home_page</span><span class="o">.</span><span class="n">is_home_heading_displayed_correctly</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">home_page</span><span class="o">.</span><span class="n">is_register_link_works</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">home_page</span><span class="o">.</span><span class="n">is_login_link_works</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="MJCarsTest.test_register_page"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest.test_register_page">[docs]</a>    <span class="k">def</span> <span class="nf">test_register_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if register page behaves as expected.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;register&#39;</span><span class="p">))</span>
+        <span class="n">register_page</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">RegisterPage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">register_page</span><span class="o">.</span><span class="n">is_title_matches</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">register_page</span><span class="o">.</span><span class="n">is_register_form_works</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="MJCarsTest.test_login_page"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest.test_login_page">[docs]</a>    <span class="k">def</span> <span class="nf">test_login_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if login page behaves as expected.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">))</span>
+        <span class="n">login_page</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">LoginPage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">login_page</span><span class="o">.</span><span class="n">is_title_matches</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">login_page</span><span class="o">.</span><span class="n">is_login_form_works</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">login_page</span><span class="o">.</span><span class="n">is_logout_link_works</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="MJCarsTest.test_cars_list_page"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest.test_cars_list_page">[docs]</a>    <span class="k">def</span> <span class="nf">test_cars_list_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if cars list page behaves as expected.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">))</span>
+        <span class="n">cars_list_page</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">CarsListPage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">)</span>
+        <span class="n">cars_list_page</span><span class="o">.</span><span class="n">do_login</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">cars_list_page</span><span class="o">.</span><span class="n">is_cars_list_link_works</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">cars_list_page</span><span class="o">.</span><span class="n">is_title_matches</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">cars_list_page</span><span class="o">.</span><span class="n">is_cars_list_heading_displayed_correctly</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">cars_list_page</span><span class="o">.</span><span class="n">is_no_cars_para_displayed_correctly</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">cars_list_page</span><span class="o">.</span><span class="n">is_search_cars_form_works</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">cars_list_page</span><span class="o">.</span><span class="n">is_add_car_form_works</span><span class="p">()</span></div></div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Maciej Jaroszewski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

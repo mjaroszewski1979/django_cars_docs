@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>htmx.tests_htmx_views &mdash; MJCars 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> MJCars
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MJCars</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>htmx.tests_htmx_views</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for htmx.tests_htmx_views</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">TestCase</span><span class="p">,</span> <span class="n">Client</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span><span class="p">,</span> <span class="n">resolve</span>
+
+<span class="c1"># App imports</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Car</span><span class="p">,</span> <span class="n">UserCars</span><span class="p">,</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">htmx_views</span>
+
+
+<div class="viewcode-block" id="generate_photo_file"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.generate_photo_file">[docs]</a><span class="k">def</span> <span class="nf">generate_photo_file</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function will return an artificial image for testing purposes.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">155</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;png&#39;</span><span class="p">)</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;test.png&#39;</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">file</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest">[docs]</a><span class="k">class</span> <span class="nc">HtmxViewsTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This class will include test methods neccessary to check if htmx_views.py file</span>
+<span class="sd">    behaves as expected.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="HtmxViewsTest.setUp"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is called before every test function to set up any objects</span>
+<span class="sd">        neccessary to perform a specified task. </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;testuser&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s1">&#39;12345&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">car</span> <span class="o">=</span> <span class="n">Car</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">producer</span><span class="o">=</span><span class="s1">&#39;porshe&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">car</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="HtmxViewsTest.tearDown"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is called after every test function to delete existing objects</span>
+<span class="sd">        neccessary to perform a specified task. </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">car</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_check_username_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_check_username_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_check_username_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
+<span class="sd">        given url parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;check-username&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="p">,</span> <span class="n">htmx_views</span><span class="o">.</span><span class="n">check_username</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_check_username_post_existing_username"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_check_username_post_existing_username">[docs]</a>    <span class="k">def</span> <span class="nf">test_check_username_post_existing_username</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a post request has correct status code</span>
+<span class="sd">        and returns the expected content.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;username&#39;</span> <span class="p">:</span> <span class="s1">&#39;testuser&#39;</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;check-username&#39;</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;This username already exists&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_check_username_post_new_username"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_check_username_post_new_username">[docs]</a>    <span class="k">def</span> <span class="nf">test_check_username_post_new_username</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a post request has correct status code</span>
+<span class="sd">        and returns the expected content.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;username&#39;</span> <span class="p">:</span> <span class="s1">&#39;newuser&#39;</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;check-username&#39;</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;This username is available&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_add_car_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_add_car_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_add_car_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
+<span class="sd">        given url parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;add_car&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="p">,</span> <span class="n">htmx_views</span><span class="o">.</span><span class="n">add_car</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_add_car_post_anonymous_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_add_car_post_anonymous_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_add_car_post_anonymous_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a post request has correct status code.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;car_producer&#39;</span> <span class="p">:</span> <span class="s1">&#39;audi&#39;</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;add_car&#39;</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_add_car_post_authenticated_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_add_car_post_authenticated_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_add_car_post_authenticated_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a post request made by authenticated user:</span>
+<span class="sd">        - has the expected context dictionary passed to the template</span>
+<span class="sd">        - returns correct status code</span>
+<span class="sd">        - uses appropriate template</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;car_producer&#39;</span> <span class="p">:</span> <span class="s1">&#39;audi&#39;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;add_car&#39;</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="n">ctx_car_producer</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;cars&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNotNone</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;cars&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">ctx_car_producer</span><span class="o">.</span><span class="n">car</span><span class="o">.</span><span class="n">producer</span><span class="p">,</span> <span class="s1">&#39;audi&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;partials/car_list.html&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_delete_car_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_delete_car_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_delete_car_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
+<span class="sd">        given url parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;delete_car&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="p">,</span> <span class="n">htmx_views</span><span class="o">.</span><span class="n">delete_car</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_delete_car_get_anonymous_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_delete_car_get_anonymous_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_delete_car_get_anonymous_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a post request has correct status code.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;delete_car&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_delete_car_get_authenticated_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_delete_car_get_authenticated_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_delete_car_get_authenticated_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a delete request has:</span>
+<span class="sd">        -  correct status code </span>
+<span class="sd">        - returns expected number of UserCars instances</span>
+<span class="sd">        - response has the expected context dictionary passed to the template</span>
+<span class="sd">        - view function is using accurate template</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;car_producer&#39;</span> <span class="p">:</span> <span class="s1">&#39;audi&#39;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;add_car&#39;</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;delete_car&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)))</span>
+        <span class="n">num_cars</span> <span class="o">=</span> <span class="n">UserCars</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;cars&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_cars</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;partials/car_list.html&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNotNone</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ctx</span><span class="p">),</span> <span class="s1">&#39;&lt;QuerySet []&gt;&#39;</span><span class="p">)</span></div>
+        
+<div class="viewcode-block" id="HtmxViewsTest.test_search_car_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_search_car_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_search_car_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
+<span class="sd">        given url parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;search_car&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="p">,</span> <span class="n">htmx_views</span><span class="o">.</span><span class="n">search_car</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_search_car_post_anonymous_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_search_car_post_anonymous_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_search_car_post_anonymous_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a post request has correct status code.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;search&#39;</span> <span class="p">:</span> <span class="s1">&#39;porshe&#39;</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;search_car&#39;</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_search_car_post_authenticated_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_search_car_post_authenticated_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_search_car_post_authenticated_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if:</span>
+<span class="sd">        - acquired response to a delete request has correct status code </span>
+<span class="sd">        - returns expected number of UserCars instances</span>
+<span class="sd">        - response has the expected context dictionary passed to the template</span>
+<span class="sd">        - view function is using accurate template</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;search&#39;</span> <span class="p">:</span> <span class="s1">&#39;porshe&#39;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;search_car&#39;</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="n">ctx_car_producer</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNotNone</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">ctx_car_producer</span><span class="o">.</span><span class="n">producer</span><span class="p">,</span> <span class="s1">&#39;porshe&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;partials/search_results.html&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_detail_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_detail_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_detail_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
+<span class="sd">        given url parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;detail&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="p">,</span> <span class="n">htmx_views</span><span class="o">.</span><span class="n">detail</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_detail_get_anonymous_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_detail_get_anonymous_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_detail_get_anonymous_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a post request has correct status code.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;detail&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_detail_get_authenticated_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_detail_get_authenticated_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_detail_get_authenticated_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a get request made by authenticated user:</span>
+<span class="sd">        - has the expected context dictionary passed to the template</span>
+<span class="sd">        - returns correct status code</span>
+<span class="sd">        - uses appropriate template</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;car_producer&#39;</span> <span class="p">:</span> <span class="s1">&#39;audi&#39;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;add_car&#39;</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;detail&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)))</span>
+        <span class="n">user_car</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;user_car&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNotNone</span><span class="p">(</span><span class="n">user_car</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">user_car</span><span class="o">.</span><span class="n">car</span><span class="o">.</span><span class="n">producer</span><span class="p">,</span> <span class="s1">&#39;audi&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;partials/car_detail.html&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_cars_partial_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_cars_partial_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_cars_partial_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
+<span class="sd">        given url parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;car_list_partial&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="p">,</span> <span class="n">htmx_views</span><span class="o">.</span><span class="n">cars_partial</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_cars_partial_get_anonymous_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_cars_partial_get_anonymous_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_cars_partial_get_anonymous_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a post request has correct status code.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;car_list_partial&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_cars_partial_get_authenticated_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_cars_partial_get_authenticated_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_cars_partial_get_authenticated_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a get request made by authenticated user:</span>
+<span class="sd">        - has the expected context dictionary passed to the template</span>
+<span class="sd">        - returns correct status code</span>
+<span class="sd">        - uses appropriate template</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;car_list_partial&#39;</span><span class="p">))</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;cars&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNotNone</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;partials/car_list.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HtmxViewsTest.test_upload_photo_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_upload_photo_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_upload_photo_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
+<span class="sd">        given url parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;upload_photo&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="p">,</span> <span class="n">htmx_views</span><span class="o">.</span><span class="n">upload_photo</span><span class="p">)</span> </div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_upload_photo_post_anonymous_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_upload_photo_post_anonymous_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_upload_photo_post_anonymous_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a post request has correct status code.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;upload_photo&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_upload_photo_post_authenticated_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_upload_photo_post_authenticated_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_upload_photo_post_authenticated_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a post request made by authenticated user:</span>
+<span class="sd">        - has the expected context dictionary passed to the template</span>
+<span class="sd">        - returns correct status code</span>
+<span class="sd">        - uses appropriate template</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;photo&#39;</span> <span class="p">:</span> <span class="n">generate_photo_file</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;car_producer&#39;</span> <span class="p">:</span> <span class="s1">&#39;audi&#39;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;add_car&#39;</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;upload_photo&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)),</span> <span class="n">image</span><span class="p">)</span>
+        <span class="n">user_car</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;user_car&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNotNone</span><span class="p">(</span><span class="n">user_car</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;partials/car_detail.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HtmxViewsTest.test_clear_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_clear_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_clear_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
+<span class="sd">        given url parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;clear&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="p">,</span> <span class="n">htmx_views</span><span class="o">.</span><span class="n">clear</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_clear_get"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_clear_get">[docs]</a>    <span class="k">def</span> <span class="nf">test_clear_get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a get request has correct status code.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;clear&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_sort_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_sort_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_sort_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
+<span class="sd">        given url parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;sort&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="p">,</span> <span class="n">htmx_views</span><span class="o">.</span><span class="n">sort</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HtmxViewsTest.test_sort_get"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_htmx_views.HtmxViewsTest.test_sort_get">[docs]</a>    <span class="k">def</span> <span class="nf">test_sort_get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is test method to verify if acquired response to a get request has correct status code and</span>
+<span class="sd">        uses appropriate template.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;add_car&#39;</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;car_producer&#39;</span> <span class="p">:</span> <span class="s1">&#39;audi&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;add_car&#39;</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;car_producer&#39;</span> <span class="p">:</span> <span class="s1">&#39;skoda&#39;</span><span class="p">})</span>
+        <span class="n">cars</span> <span class="o">=</span> <span class="n">UserCars</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">car</span> <span class="ow">in</span> <span class="n">cars</span><span class="p">:</span>
+            <span class="n">car_order</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">car</span><span class="o">.</span><span class="n">order</span> <span class="p">:</span> <span class="n">car</span><span class="o">.</span><span class="n">car</span><span class="o">.</span><span class="n">producer</span>
+            <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;sort&#39;</span><span class="p">),</span> <span class="n">car_order</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;partials/car_list.html&#39;</span><span class="p">)</span></div></div>
+
+
+
+
+        
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Maciej Jaroszewski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

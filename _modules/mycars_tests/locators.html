@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mycars_tests.locators &mdash; MJCars 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> MJCars
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MJCars</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>mycars_tests.locators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for mycars_tests.locators</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+
+<div class="viewcode-block" id="HomePageLocators"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.locators.HomePageLocators">[docs]</a><span class="k">class</span> <span class="nc">HomePageLocators</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This class will include web element locators neccessary to perform home page test automation process.</span>
+<span class="sd">    :type name: ChromeDriver interface.</span>
+<span class="sd">    :param object: standalone server that Selenium WebDriver uses to launch Google Chrome.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">HOME_HEADING</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//header[@id=&#39;header&#39;]//h1&quot;</span><span class="p">)</span>
+    <span class="n">REGISTER_LINK</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">LINK_TEXT</span><span class="p">,</span> <span class="s1">&#39;REGISTER&#39;</span><span class="p">)</span>
+    <span class="n">LOGIN_LINK</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">LINK_TEXT</span><span class="p">,</span> <span class="s1">&#39;LOGIN&#39;</span><span class="p">)</span>
+    <span class="n">HOME_LINK</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">LINK_TEXT</span><span class="p">,</span> <span class="s1">&#39;RIDES BY MJ&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RegisterPageLocators"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.locators.RegisterPageLocators">[docs]</a><span class="k">class</span> <span class="nc">RegisterPageLocators</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This class will include web element locators neccessary to perform register page test automation process.</span>
+<span class="sd">    :type name: ChromeDriver interface.</span>
+<span class="sd">    :param object: standalone server that Selenium WebDriver uses to launch Google Chrome.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">USERNAME_FIELD</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">)</span>
+    <span class="n">PASSWORD1_FIELD</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s1">&#39;password1&#39;</span><span class="p">)</span>
+    <span class="n">PASSWORD2_FIELD</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s1">&#39;password2&#39;</span><span class="p">)</span>
+    <span class="n">SUBMIT_BUTTON</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@class=&#39;register&#39;]//section//ul[@class=&#39;actions&#39;]//input[@class=&#39;primary&#39;]&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LoginPageLocators"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.locators.LoginPageLocators">[docs]</a><span class="k">class</span> <span class="nc">LoginPageLocators</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This class will include web element locators neccessary to perform login page test automation process.</span>
+<span class="sd">    :type name: ChromeDriver interface.</span>
+<span class="sd">    :param object: standalone server that Selenium WebDriver uses to launch Google Chrome.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">USERNAME_FIELD</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">)</span>
+    <span class="n">PASSWORD_FIELD</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">)</span>
+    <span class="n">LOGIN_BUTTON</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@class=&#39;login&#39;]//section//ul[@class=&#39;actions&#39;]//input[@class=&#39;primary&#39;]&quot;</span><span class="p">)</span>
+    <span class="n">LOGOUT_LINK</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">LINK_TEXT</span><span class="p">,</span> <span class="s1">&#39;LOGOUT&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CarsListPageLocators"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.locators.CarsListPageLocators">[docs]</a><span class="k">class</span> <span class="nc">CarsListPageLocators</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This class will include web element locators neccessary to perform cars list page test automation process.</span>
+<span class="sd">    :type name: ChromeDriver interface.</span>
+<span class="sd">    :param object: standalone server that Selenium WebDriver uses to launch Google Chrome.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">CARS_LIST_HEADING</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@class=&#39;car-list-main&#39;]//h3&quot;</span><span class="p">)</span>
+    <span class="n">CARS_LIST_LINK</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">LINK_TEXT</span><span class="p">,</span> <span class="s1">&#39;MY CARS&#39;</span><span class="p">)</span>
+    <span class="n">NO_CARS_YET_PARA</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//*[@id=&#39;car-list&#39;]/div/div[2]/section[1]/p&quot;</span><span class="p">)</span>
+    <span class="n">SEARCH_CARS_FIELD</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//*[@id=&#39;car-list&#39;]/div/div[2]/section[2]/div[1]/input[2]&quot;</span><span class="p">)</span>
+    <span class="n">ADD_CAR_BUTTON</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//*[@id=&#39;results&#39;]/ul/li/span&quot;</span><span class="p">)</span>
+    <span class="n">CAR_LIST_ITEM</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//*[@id=&#39;car-list&#39;]/div/div[2]/section[1]/form/div[2]/li/a&quot;</span><span class="p">)</span>
+    <span class="n">ADD_CAR_FIELD</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//*[@id=&#39;car-list&#39;]/div/div[1]/form/input&quot;</span><span class="p">)</span>
+    <span class="n">ADD_CAR_SUBMIT</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//*[@id=&#39;car-list&#39;]/div/div[1]/form/button&quot;</span><span class="p">)</span>
+    <span class="n">MESSAGE_TEXT</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@class=&#39;d-flex justify-content-between&#39;]//section//ul[@class=&#39;messages&#39;]//li&quot;</span><span class="p">)</span></div>
+  
+
+
+    
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Maciej Jaroszewski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -52,10 +52,26 @@ htmx.models module
    :undoc-members:
    :show-inheritance:
 
-htmx.tests module
------------------
+htmx.tests\_htmx\_views module
+------------------------------
 
-.. automodule:: htmx.tests
+.. automodule:: htmx.tests_htmx_views
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+htmx.tests\_utils module
+------------------------
+
+.. automodule:: htmx.tests_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+htmx.tests\_views module
+------------------------
+
+.. automodule:: htmx.tests_views
    :members:
    :undoc-members:
    :show-inheritance:

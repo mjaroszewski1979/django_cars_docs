@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mycars_tests.page &mdash; MJCars 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> MJCars
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MJCars</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>mycars_tests.page</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for mycars_tests.page</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span> <span class="k">as</span> <span class="n">W</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
+<span class="kn">from</span> <span class="nn">.locators</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">HomePageLocators</span><span class="p">,</span>
+    <span class="n">RegisterPageLocators</span><span class="p">,</span>
+    <span class="n">LoginPageLocators</span><span class="p">,</span> 
+    <span class="n">CarsListPageLocators</span>
+<span class="p">)</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+
+<div class="viewcode-block" id="BasePage"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.BasePage">[docs]</a><span class="k">class</span> <span class="nc">BasePage</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This is a base class to provide an interface and make sure that derived concrete classes are properly implemented. It will include </span>
+<span class="sd">    abstract methods neccessary to perform the most common test automation processes.</span>
+<span class="sd">    :type name: ChromeDriver interface.</span>
+<span class="sd">    :param object: standalone server that Selenium WebDriver uses to launch Google Chrome.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">driver</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method will automatically run to enforce upon object creation the initial web driver values. </span>
+<span class="sd">        :type name: ChromeDriver interface.</span>
+<span class="sd">        :param driver: standalone server that Selenium WebDriver uses to launch Google Chrome.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">driver</span>
+
+<div class="viewcode-block" id="BasePage.do_clear"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.BasePage.do_clear">[docs]</a>    <span class="k">def</span> <span class="nf">do_clear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">locator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is used to clear text of any field, such as input field of a form.</span>
+<span class="sd">        :type name: Selenium locator.</span>
+<span class="sd">        :param locator: address that identifies a web element uniquely within the webpage.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">W</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">(</span><span class="n">locator</span><span class="p">))</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BasePage.do_click"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.BasePage.do_click">[docs]</a>    <span class="k">def</span> <span class="nf">do_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">locator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is used to perform various mouse-based operations for web-application.</span>
+<span class="sd">        :type name: Selenium locator.</span>
+<span class="sd">        :param locator: address that identifies a web element uniquely within the webpage.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">W</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">(</span><span class="n">locator</span><span class="p">))</span><span class="o">.</span><span class="n">click</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BasePage.do_login"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.BasePage.do_login">[docs]</a>    <span class="k">def</span> <span class="nf">do_login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is used to perform login attempts with registered user credentials.</span>
+<span class="sd">        :type name: string.</span>
+<span class="sd">        :param username: authenticate a user when logging into web application.</span>
+<span class="sd">        :type name: string.</span>
+<span class="sd">        :param password: authenticate a user when logging into web application.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_clear</span><span class="p">(</span><span class="n">LoginPageLocators</span><span class="o">.</span><span class="n">USERNAME_FIELD</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_clear</span><span class="p">(</span><span class="n">LoginPageLocators</span><span class="o">.</span><span class="n">PASSWORD_FIELD</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_send_keys</span><span class="p">(</span><span class="n">LoginPageLocators</span><span class="o">.</span><span class="n">USERNAME_FIELD</span><span class="p">,</span> <span class="n">username</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_send_keys</span><span class="p">(</span><span class="n">LoginPageLocators</span><span class="o">.</span><span class="n">PASSWORD_FIELD</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_click</span><span class="p">(</span><span class="n">LoginPageLocators</span><span class="o">.</span><span class="n">LOGIN_BUTTON</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BasePage.do_submit"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.BasePage.do_submit">[docs]</a>    <span class="k">def</span> <span class="nf">do_submit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">locator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is applicable only for &lt;form&gt; and it can be used with any element inside a form.</span>
+<span class="sd">        :type name: Selenium locator.</span>
+<span class="sd">        :param locator: address that identifies a web element uniquely within the webpage.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">W</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">(</span><span class="n">locator</span><span class="p">))</span><span class="o">.</span><span class="n">submit</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BasePage.do_send_keys"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.BasePage.do_send_keys">[docs]</a>    <span class="k">def</span> <span class="nf">do_send_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">locator</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is a method used to enter editable content in the text and password fields during test execution.</span>
+<span class="sd">        :type name: Selenium locator.</span>
+<span class="sd">        :param locator: address that identifies a web element uniquely within the webpage.</span>
+<span class="sd">        :type name: string.</span>
+<span class="sd">        :param text: keyboard input such as characters, numbers, and symbols to text boxes inside an application.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">W</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">(</span><span class="n">locator</span><span class="p">))</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BasePage.get_element"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.BasePage.get_element">[docs]</a>    <span class="k">def</span> <span class="nf">get_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">locator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is used to find a unique web element within the webpage and it returns an object of type WebElement.</span>
+<span class="sd">        :type name: Selenium locator.</span>
+<span class="sd">        :param locator: address that identifies a web element uniquely within the webpage.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">element</span> <span class="o">=</span> <span class="n">W</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">(</span><span class="n">locator</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">element</span></div>
+
+<div class="viewcode-block" id="BasePage.get_elements"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.BasePage.get_elements">[docs]</a>    <span class="k">def</span> <span class="nf">get_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">locator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is used to find a list of unique web elements within the webpage and it returns </span>
+<span class="sd">        the list of web elements that match the locator value, unlike get_element, which returns only a single web element.</span>
+<span class="sd">        :type name: Selenium locator.</span>
+<span class="sd">        :param locator: address that identifies a web element uniquely within the webpage.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">elements</span> <span class="o">=</span> <span class="n">W</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">(</span><span class="n">locator</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">elements</span></div>
+
+<div class="viewcode-block" id="BasePage.get_element_text"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.BasePage.get_element_text">[docs]</a>    <span class="k">def</span> <span class="nf">get_element_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">locator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is used to bring out the text that is visible in the HTML content. It ignores the spaces inside the HTML file.</span>
+<span class="sd">        :param locator: address that identifies a web element uniquely within the webpage.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">element</span> <span class="o">=</span> <span class="n">W</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">(</span><span class="n">locator</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">element</span><span class="o">.</span><span class="n">text</span></div></div>
+
+
+<div class="viewcode-block" id="HomePage"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.HomePage">[docs]</a><span class="k">class</span> <span class="nc">HomePage</span><span class="p">(</span><span class="n">BasePage</span><span class="p">):</span>
+
+<div class="viewcode-block" id="HomePage.is_title_matches"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.HomePage.is_title_matches">[docs]</a>    <span class="k">def</span> <span class="nf">is_title_matches</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;My Rides | Home Page&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">title</span></div>
+
+<div class="viewcode-block" id="HomePage.is_home_heading_displayed_correctly"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.HomePage.is_home_heading_displayed_correctly">[docs]</a>    <span class="k">def</span> <span class="nf">is_home_heading_displayed_correctly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">home_heading</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_element_text</span><span class="p">(</span><span class="n">HomePageLocators</span><span class="o">.</span><span class="n">HOME_HEADING</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;RIDES BY MJ&#39;</span>
+        <span class="k">return</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">home_heading</span></div>
+
+<div class="viewcode-block" id="HomePage.is_register_link_works"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.HomePage.is_register_link_works">[docs]</a>    <span class="k">def</span> <span class="nf">is_register_link_works</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_click</span><span class="p">(</span><span class="n">HomePageLocators</span><span class="o">.</span><span class="n">REGISTER_LINK</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;My Rides | Register&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">title</span></div>
+
+<div class="viewcode-block" id="HomePage.is_login_link_works"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.HomePage.is_login_link_works">[docs]</a>    <span class="k">def</span> <span class="nf">is_login_link_works</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_click</span><span class="p">(</span><span class="n">HomePageLocators</span><span class="o">.</span><span class="n">LOGIN_LINK</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;My Rides | Login&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">title</span></div>
+
+<div class="viewcode-block" id="HomePage.is_home_link_works"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.HomePage.is_home_link_works">[docs]</a>    <span class="k">def</span> <span class="nf">is_home_link_works</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_click</span><span class="p">(</span><span class="n">HomePageLocators</span><span class="o">.</span><span class="n">HOME_LINK</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;My Rides | Home Page&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">title</span></div></div>
+
+<div class="viewcode-block" id="RegisterPage"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.RegisterPage">[docs]</a><span class="k">class</span> <span class="nc">RegisterPage</span><span class="p">(</span><span class="n">BasePage</span><span class="p">):</span>
+
+<div class="viewcode-block" id="RegisterPage.is_title_matches"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.RegisterPage.is_title_matches">[docs]</a>    <span class="k">def</span> <span class="nf">is_title_matches</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;My Rides | Register&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">title</span> </div>
+
+<div class="viewcode-block" id="RegisterPage.is_register_form_works"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.RegisterPage.is_register_form_works">[docs]</a>    <span class="k">def</span> <span class="nf">is_register_form_works</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_clear</span><span class="p">(</span><span class="n">RegisterPageLocators</span><span class="o">.</span><span class="n">USERNAME_FIELD</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_clear</span><span class="p">(</span><span class="n">RegisterPageLocators</span><span class="o">.</span><span class="n">PASSWORD1_FIELD</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_clear</span><span class="p">(</span><span class="n">RegisterPageLocators</span><span class="o">.</span><span class="n">PASSWORD2_FIELD</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_send_keys</span><span class="p">(</span><span class="n">RegisterPageLocators</span><span class="o">.</span><span class="n">USERNAME_FIELD</span><span class="p">,</span> <span class="s1">&#39;mjaroszewski&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_send_keys</span><span class="p">(</span><span class="n">RegisterPageLocators</span><span class="o">.</span><span class="n">PASSWORD1_FIELD</span><span class="p">,</span> <span class="s1">&#39;maciej_1245&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_send_keys</span><span class="p">(</span><span class="n">RegisterPageLocators</span><span class="o">.</span><span class="n">PASSWORD2_FIELD</span><span class="p">,</span> <span class="s1">&#39;maciej_1245&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_click</span><span class="p">(</span><span class="n">RegisterPageLocators</span><span class="o">.</span><span class="n">SUBMIT_BUTTON</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;My Rides | Login&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">title</span> </div></div>
+
+<div class="viewcode-block" id="LoginPage"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.LoginPage">[docs]</a><span class="k">class</span> <span class="nc">LoginPage</span><span class="p">(</span><span class="n">BasePage</span><span class="p">):</span>
+
+<div class="viewcode-block" id="LoginPage.is_title_matches"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.LoginPage.is_title_matches">[docs]</a>    <span class="k">def</span> <span class="nf">is_title_matches</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;My Rides | Login&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">title</span> </div>
+
+<div class="viewcode-block" id="LoginPage.is_login_form_works"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.LoginPage.is_login_form_works">[docs]</a>    <span class="k">def</span> <span class="nf">is_login_form_works</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_login</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;testuser&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;12345&#39;</span><span class="p">)</span>
+        <span class="n">logout_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_element_text</span><span class="p">(</span><span class="n">LoginPageLocators</span><span class="o">.</span><span class="n">LOGOUT_LINK</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;LOGOUT&#39;</span> <span class="ow">in</span> <span class="n">logout_text</span></div>
+
+<div class="viewcode-block" id="LoginPage.is_logout_link_works"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.LoginPage.is_logout_link_works">[docs]</a>    <span class="k">def</span> <span class="nf">is_logout_link_works</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_click</span><span class="p">(</span><span class="n">LoginPageLocators</span><span class="o">.</span><span class="n">LOGOUT_LINK</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;My Rides | Home Page&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">title</span></div></div>
+
+<div class="viewcode-block" id="CarsListPage"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.CarsListPage">[docs]</a><span class="k">class</span> <span class="nc">CarsListPage</span><span class="p">(</span><span class="n">BasePage</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CarsListPage.is_title_matches"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.CarsListPage.is_title_matches">[docs]</a>    <span class="k">def</span> <span class="nf">is_title_matches</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;My Rides | Cars List&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">title</span> </div>
+
+<div class="viewcode-block" id="CarsListPage.is_cars_list_link_works"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.CarsListPage.is_cars_list_link_works">[docs]</a>    <span class="k">def</span> <span class="nf">is_cars_list_link_works</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_click</span><span class="p">(</span><span class="n">CarsListPageLocators</span><span class="o">.</span><span class="n">CARS_LIST_LINK</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;My Rides | Cars List&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">title</span> </div>
+
+<div class="viewcode-block" id="CarsListPage.is_cars_list_heading_displayed_correctly"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.CarsListPage.is_cars_list_heading_displayed_correctly">[docs]</a>    <span class="k">def</span> <span class="nf">is_cars_list_heading_displayed_correctly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">cars_list_heading</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_element_text</span><span class="p">(</span><span class="n">CarsListPageLocators</span><span class="o">.</span><span class="n">CARS_LIST_HEADING</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;MY CARS&#39;</span>
+        <span class="k">return</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">cars_list_heading</span></div>
+
+<div class="viewcode-block" id="CarsListPage.is_no_cars_para_displayed_correctly"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.CarsListPage.is_no_cars_para_displayed_correctly">[docs]</a>    <span class="k">def</span> <span class="nf">is_no_cars_para_displayed_correctly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">no_cars_para</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_element_text</span><span class="p">(</span><span class="n">CarsListPageLocators</span><span class="o">.</span><span class="n">NO_CARS_YET_PARA</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;YOU DO NOT HAVE CARS YET...&#39;</span>
+        <span class="k">return</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">no_cars_para</span></div>
+
+<div class="viewcode-block" id="CarsListPage.is_search_cars_form_works"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.CarsListPage.is_search_cars_form_works">[docs]</a>    <span class="k">def</span> <span class="nf">is_search_cars_form_works</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_clear</span><span class="p">(</span><span class="n">CarsListPageLocators</span><span class="o">.</span><span class="n">SEARCH_CARS_FIELD</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_send_keys</span><span class="p">(</span><span class="n">CarsListPageLocators</span><span class="o">.</span><span class="n">SEARCH_CARS_FIELD</span><span class="p">,</span> <span class="s1">&#39;porshe&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_click</span><span class="p">(</span><span class="n">CarsListPageLocators</span><span class="o">.</span><span class="n">ADD_CAR_BUTTON</span><span class="p">)</span>
+        <span class="n">car_list_item_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_element_text</span><span class="p">(</span><span class="n">CarsListPageLocators</span><span class="o">.</span><span class="n">CAR_LIST_ITEM</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;PORSHE&#39;</span> <span class="ow">in</span> <span class="n">car_list_item_text</span></div>
+
+<div class="viewcode-block" id="CarsListPage.is_add_car_form_works"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.page.CarsListPage.is_add_car_form_works">[docs]</a>    <span class="k">def</span> <span class="nf">is_add_car_form_works</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_clear</span><span class="p">(</span><span class="n">CarsListPageLocators</span><span class="o">.</span><span class="n">ADD_CAR_FIELD</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_send_keys</span><span class="p">(</span><span class="n">CarsListPageLocators</span><span class="o">.</span><span class="n">ADD_CAR_FIELD</span><span class="p">,</span> <span class="s1">&#39;audi&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_click</span><span class="p">(</span><span class="n">CarsListPageLocators</span><span class="o">.</span><span class="n">ADD_CAR_SUBMIT</span><span class="p">)</span>
+        <span class="n">message_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_element_text</span><span class="p">(</span><span class="n">CarsListPageLocators</span><span class="o">.</span><span class="n">MESSAGE_TEXT</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;ADDED AUDI TO LIST OF CARS&#39;</span> <span class="ow">in</span> <span class="n">message_text</span></div></div>
+
+
+
+
+
+
+    
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Maciej Jaroszewski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

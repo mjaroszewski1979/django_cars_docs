@@ -7,3 +7,4 @@ mycars
    htmx
    manage
    mycars
+   mycars_tests

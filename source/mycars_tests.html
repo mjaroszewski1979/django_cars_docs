@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mycars_tests package &mdash; MJCars 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> MJCars
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">mycars_tests package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-mycars_tests.locators">mycars_tests.locators module</a></li>
+<li><a class="reference internal" href="#module-mycars_tests.page">mycars_tests.page module</a></li>
+<li><a class="reference internal" href="#module-mycars_tests.tests">mycars_tests.tests module</a></li>
+<li><a class="reference internal" href="#module-mycars_tests">Module contents</a><ul>
+<li><a class="reference internal" href="#htmxmodule">HtmxModule</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MJCars</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>mycars_tests package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/mycars_tests.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mycars-tests-package">
+<h1>mycars_tests package<a class="headerlink" href="#mycars-tests-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-mycars_tests.locators">
+<span id="mycars-tests-locators-module"></span><h2>mycars_tests.locators module<a class="headerlink" href="#module-mycars_tests.locators" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mycars_tests.locators.CarsListPageLocators">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mycars_tests.locators.</span></span><span class="sig-name descname"><span class="pre">CarsListPageLocators</span></span><a class="reference internal" href="../_modules/mycars_tests/locators.html#CarsListPageLocators"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.locators.CarsListPageLocators" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class will include web element locators neccessary to perform cars list page test automation process.
+:type name: ChromeDriver interface.
+:param object: standalone server that Selenium WebDriver uses to launch Google Chrome.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.CarsListPageLocators.ADD_CAR_BUTTON">
+<span class="sig-name descname"><span class="pre">ADD_CAR_BUTTON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('xpath',</span> <span class="pre">&quot;//*[&#64;id='results']/ul/li/span&quot;)</span></em><a class="headerlink" href="#mycars_tests.locators.CarsListPageLocators.ADD_CAR_BUTTON" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.CarsListPageLocators.ADD_CAR_FIELD">
+<span class="sig-name descname"><span class="pre">ADD_CAR_FIELD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('xpath',</span> <span class="pre">&quot;//*[&#64;id='car-list']/div/div[1]/form/input&quot;)</span></em><a class="headerlink" href="#mycars_tests.locators.CarsListPageLocators.ADD_CAR_FIELD" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.CarsListPageLocators.ADD_CAR_SUBMIT">
+<span class="sig-name descname"><span class="pre">ADD_CAR_SUBMIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('xpath',</span> <span class="pre">&quot;//*[&#64;id='car-list']/div/div[1]/form/button&quot;)</span></em><a class="headerlink" href="#mycars_tests.locators.CarsListPageLocators.ADD_CAR_SUBMIT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.CarsListPageLocators.CARS_LIST_HEADING">
+<span class="sig-name descname"><span class="pre">CARS_LIST_HEADING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('xpath',</span> <span class="pre">&quot;//div[&#64;class='car-list-main']//h3&quot;)</span></em><a class="headerlink" href="#mycars_tests.locators.CarsListPageLocators.CARS_LIST_HEADING" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.CarsListPageLocators.CARS_LIST_LINK">
+<span class="sig-name descname"><span class="pre">CARS_LIST_LINK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('link</span> <span class="pre">text',</span> <span class="pre">'MY</span> <span class="pre">CARS')</span></em><a class="headerlink" href="#mycars_tests.locators.CarsListPageLocators.CARS_LIST_LINK" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.CarsListPageLocators.CAR_LIST_ITEM">
+<span class="sig-name descname"><span class="pre">CAR_LIST_ITEM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('xpath',</span> <span class="pre">&quot;//*[&#64;id='car-list']/div/div[2]/section[1]/form/div[2]/li/a&quot;)</span></em><a class="headerlink" href="#mycars_tests.locators.CarsListPageLocators.CAR_LIST_ITEM" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.CarsListPageLocators.MESSAGE_TEXT">
+<span class="sig-name descname"><span class="pre">MESSAGE_TEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('xpath',</span> <span class="pre">&quot;//div[&#64;class='d-flex</span> <span class="pre">justify-content-between']//section//ul[&#64;class='messages']//li&quot;)</span></em><a class="headerlink" href="#mycars_tests.locators.CarsListPageLocators.MESSAGE_TEXT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.CarsListPageLocators.NO_CARS_YET_PARA">
+<span class="sig-name descname"><span class="pre">NO_CARS_YET_PARA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('xpath',</span> <span class="pre">&quot;//*[&#64;id='car-list']/div/div[2]/section[1]/p&quot;)</span></em><a class="headerlink" href="#mycars_tests.locators.CarsListPageLocators.NO_CARS_YET_PARA" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.CarsListPageLocators.SEARCH_CARS_FIELD">
+<span class="sig-name descname"><span class="pre">SEARCH_CARS_FIELD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('xpath',</span> <span class="pre">&quot;//*[&#64;id='car-list']/div/div[2]/section[2]/div[1]/input[2]&quot;)</span></em><a class="headerlink" href="#mycars_tests.locators.CarsListPageLocators.SEARCH_CARS_FIELD" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mycars_tests.locators.HomePageLocators">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mycars_tests.locators.</span></span><span class="sig-name descname"><span class="pre">HomePageLocators</span></span><a class="reference internal" href="../_modules/mycars_tests/locators.html#HomePageLocators"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.locators.HomePageLocators" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class will include web element locators neccessary to perform home page test automation process.
+:type name: ChromeDriver interface.
+:param object: standalone server that Selenium WebDriver uses to launch Google Chrome.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.HomePageLocators.HOME_HEADING">
+<span class="sig-name descname"><span class="pre">HOME_HEADING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('xpath',</span> <span class="pre">&quot;//header[&#64;id='header']//h1&quot;)</span></em><a class="headerlink" href="#mycars_tests.locators.HomePageLocators.HOME_HEADING" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.HomePageLocators.HOME_LINK">
+<span class="sig-name descname"><span class="pre">HOME_LINK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('link</span> <span class="pre">text',</span> <span class="pre">'RIDES</span> <span class="pre">BY</span> <span class="pre">MJ')</span></em><a class="headerlink" href="#mycars_tests.locators.HomePageLocators.HOME_LINK" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.HomePageLocators.LOGIN_LINK">
+<span class="sig-name descname"><span class="pre">LOGIN_LINK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('link</span> <span class="pre">text',</span> <span class="pre">'LOGIN')</span></em><a class="headerlink" href="#mycars_tests.locators.HomePageLocators.LOGIN_LINK" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.HomePageLocators.REGISTER_LINK">
+<span class="sig-name descname"><span class="pre">REGISTER_LINK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('link</span> <span class="pre">text',</span> <span class="pre">'REGISTER')</span></em><a class="headerlink" href="#mycars_tests.locators.HomePageLocators.REGISTER_LINK" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mycars_tests.locators.LoginPageLocators">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mycars_tests.locators.</span></span><span class="sig-name descname"><span class="pre">LoginPageLocators</span></span><a class="reference internal" href="../_modules/mycars_tests/locators.html#LoginPageLocators"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.locators.LoginPageLocators" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class will include web element locators neccessary to perform login page test automation process.
+:type name: ChromeDriver interface.
+:param object: standalone server that Selenium WebDriver uses to launch Google Chrome.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.LoginPageLocators.LOGIN_BUTTON">
+<span class="sig-name descname"><span class="pre">LOGIN_BUTTON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('xpath',</span> <span class="pre">&quot;//div[&#64;class='login']//section//ul[&#64;class='actions']//input[&#64;class='primary']&quot;)</span></em><a class="headerlink" href="#mycars_tests.locators.LoginPageLocators.LOGIN_BUTTON" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.LoginPageLocators.LOGOUT_LINK">
+<span class="sig-name descname"><span class="pre">LOGOUT_LINK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('link</span> <span class="pre">text',</span> <span class="pre">'LOGOUT')</span></em><a class="headerlink" href="#mycars_tests.locators.LoginPageLocators.LOGOUT_LINK" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.LoginPageLocators.PASSWORD_FIELD">
+<span class="sig-name descname"><span class="pre">PASSWORD_FIELD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('name',</span> <span class="pre">'password')</span></em><a class="headerlink" href="#mycars_tests.locators.LoginPageLocators.PASSWORD_FIELD" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.LoginPageLocators.USERNAME_FIELD">
+<span class="sig-name descname"><span class="pre">USERNAME_FIELD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('name',</span> <span class="pre">'username')</span></em><a class="headerlink" href="#mycars_tests.locators.LoginPageLocators.USERNAME_FIELD" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mycars_tests.locators.RegisterPageLocators">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mycars_tests.locators.</span></span><span class="sig-name descname"><span class="pre">RegisterPageLocators</span></span><a class="reference internal" href="../_modules/mycars_tests/locators.html#RegisterPageLocators"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.locators.RegisterPageLocators" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class will include web element locators neccessary to perform register page test automation process.
+:type name: ChromeDriver interface.
+:param object: standalone server that Selenium WebDriver uses to launch Google Chrome.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.RegisterPageLocators.PASSWORD1_FIELD">
+<span class="sig-name descname"><span class="pre">PASSWORD1_FIELD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('name',</span> <span class="pre">'password1')</span></em><a class="headerlink" href="#mycars_tests.locators.RegisterPageLocators.PASSWORD1_FIELD" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.RegisterPageLocators.PASSWORD2_FIELD">
+<span class="sig-name descname"><span class="pre">PASSWORD2_FIELD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('name',</span> <span class="pre">'password2')</span></em><a class="headerlink" href="#mycars_tests.locators.RegisterPageLocators.PASSWORD2_FIELD" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.RegisterPageLocators.SUBMIT_BUTTON">
+<span class="sig-name descname"><span class="pre">SUBMIT_BUTTON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('xpath',</span> <span class="pre">&quot;//div[&#64;class='register']//section//ul[&#64;class='actions']//input[&#64;class='primary']&quot;)</span></em><a class="headerlink" href="#mycars_tests.locators.RegisterPageLocators.SUBMIT_BUTTON" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mycars_tests.locators.RegisterPageLocators.USERNAME_FIELD">
+<span class="sig-name descname"><span class="pre">USERNAME_FIELD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('name',</span> <span class="pre">'username')</span></em><a class="headerlink" href="#mycars_tests.locators.RegisterPageLocators.USERNAME_FIELD" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mycars_tests.page">
+<span id="mycars-tests-page-module"></span><h2>mycars_tests.page module<a class="headerlink" href="#module-mycars_tests.page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mycars_tests.page.BasePage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mycars_tests.page.</span></span><span class="sig-name descname"><span class="pre">BasePage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">driver</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#BasePage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.BasePage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is a base class to provide an interface and make sure that derived concrete classes are properly implemented. It will include
+abstract methods neccessary to perform the most common test automation processes.
+:type name: ChromeDriver interface.
+:param object: standalone server that Selenium WebDriver uses to launch Google Chrome.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.BasePage.do_clear">
+<span class="sig-name descname"><span class="pre">do_clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#BasePage.do_clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.BasePage.do_clear" title="Permalink to this definition"></a></dt>
+<dd><p>This method is used to clear text of any field, such as input field of a form.
+:type name: Selenium locator.
+:param locator: address that identifies a web element uniquely within the webpage.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.BasePage.do_click">
+<span class="sig-name descname"><span class="pre">do_click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#BasePage.do_click"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.BasePage.do_click" title="Permalink to this definition"></a></dt>
+<dd><p>This method is used to perform various mouse-based operations for web-application.
+:type name: Selenium locator.
+:param locator: address that identifies a web element uniquely within the webpage.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.BasePage.do_login">
+<span class="sig-name descname"><span class="pre">do_login</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#BasePage.do_login"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.BasePage.do_login" title="Permalink to this definition"></a></dt>
+<dd><p>This method is used to perform login attempts with registered user credentials.
+:type name: string.
+:param username: authenticate a user when logging into web application.
+:type name: string.
+:param password: authenticate a user when logging into web application.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.BasePage.do_send_keys">
+<span class="sig-name descname"><span class="pre">do_send_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#BasePage.do_send_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.BasePage.do_send_keys" title="Permalink to this definition"></a></dt>
+<dd><p>This is a method used to enter editable content in the text and password fields during test execution.
+:type name: Selenium locator.
+:param locator: address that identifies a web element uniquely within the webpage.
+:type name: string.
+:param text: keyboard input such as characters, numbers, and symbols to text boxes inside an application.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.BasePage.do_submit">
+<span class="sig-name descname"><span class="pre">do_submit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#BasePage.do_submit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.BasePage.do_submit" title="Permalink to this definition"></a></dt>
+<dd><p>This method is applicable only for &lt;form&gt; and it can be used with any element inside a form.
+:type name: Selenium locator.
+:param locator: address that identifies a web element uniquely within the webpage.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.BasePage.get_element">
+<span class="sig-name descname"><span class="pre">get_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#BasePage.get_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.BasePage.get_element" title="Permalink to this definition"></a></dt>
+<dd><p>This method is used to find a unique web element within the webpage and it returns an object of type WebElement.
+:type name: Selenium locator.
+:param locator: address that identifies a web element uniquely within the webpage.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.BasePage.get_element_text">
+<span class="sig-name descname"><span class="pre">get_element_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#BasePage.get_element_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.BasePage.get_element_text" title="Permalink to this definition"></a></dt>
+<dd><p>This method is used to bring out the text that is visible in the HTML content. It ignores the spaces inside the HTML file.
+:param locator: address that identifies a web element uniquely within the webpage.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.BasePage.get_elements">
+<span class="sig-name descname"><span class="pre">get_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#BasePage.get_elements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.BasePage.get_elements" title="Permalink to this definition"></a></dt>
+<dd><p>This method is used to find a list of unique web elements within the webpage and it returns
+the list of web elements that match the locator value, unlike get_element, which returns only a single web element.
+:type name: Selenium locator.
+:param locator: address that identifies a web element uniquely within the webpage.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mycars_tests.page.CarsListPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mycars_tests.page.</span></span><span class="sig-name descname"><span class="pre">CarsListPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">driver</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#CarsListPage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.CarsListPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mycars_tests.page.BasePage" title="mycars_tests.page.BasePage"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePage</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.CarsListPage.is_add_car_form_works">
+<span class="sig-name descname"><span class="pre">is_add_car_form_works</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#CarsListPage.is_add_car_form_works"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.CarsListPage.is_add_car_form_works" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.CarsListPage.is_cars_list_heading_displayed_correctly">
+<span class="sig-name descname"><span class="pre">is_cars_list_heading_displayed_correctly</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#CarsListPage.is_cars_list_heading_displayed_correctly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.CarsListPage.is_cars_list_heading_displayed_correctly" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.CarsListPage.is_cars_list_link_works">
+<span class="sig-name descname"><span class="pre">is_cars_list_link_works</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#CarsListPage.is_cars_list_link_works"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.CarsListPage.is_cars_list_link_works" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.CarsListPage.is_no_cars_para_displayed_correctly">
+<span class="sig-name descname"><span class="pre">is_no_cars_para_displayed_correctly</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#CarsListPage.is_no_cars_para_displayed_correctly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.CarsListPage.is_no_cars_para_displayed_correctly" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.CarsListPage.is_search_cars_form_works">
+<span class="sig-name descname"><span class="pre">is_search_cars_form_works</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#CarsListPage.is_search_cars_form_works"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.CarsListPage.is_search_cars_form_works" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.CarsListPage.is_title_matches">
+<span class="sig-name descname"><span class="pre">is_title_matches</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#CarsListPage.is_title_matches"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.CarsListPage.is_title_matches" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mycars_tests.page.HomePage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mycars_tests.page.</span></span><span class="sig-name descname"><span class="pre">HomePage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">driver</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#HomePage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.HomePage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mycars_tests.page.BasePage" title="mycars_tests.page.BasePage"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePage</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.HomePage.is_home_heading_displayed_correctly">
+<span class="sig-name descname"><span class="pre">is_home_heading_displayed_correctly</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#HomePage.is_home_heading_displayed_correctly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.HomePage.is_home_heading_displayed_correctly" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.HomePage.is_home_link_works">
+<span class="sig-name descname"><span class="pre">is_home_link_works</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#HomePage.is_home_link_works"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.HomePage.is_home_link_works" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.HomePage.is_login_link_works">
+<span class="sig-name descname"><span class="pre">is_login_link_works</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#HomePage.is_login_link_works"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.HomePage.is_login_link_works" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.HomePage.is_register_link_works">
+<span class="sig-name descname"><span class="pre">is_register_link_works</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#HomePage.is_register_link_works"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.HomePage.is_register_link_works" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.HomePage.is_title_matches">
+<span class="sig-name descname"><span class="pre">is_title_matches</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#HomePage.is_title_matches"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.HomePage.is_title_matches" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mycars_tests.page.LoginPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mycars_tests.page.</span></span><span class="sig-name descname"><span class="pre">LoginPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">driver</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#LoginPage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.LoginPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mycars_tests.page.BasePage" title="mycars_tests.page.BasePage"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePage</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.LoginPage.is_login_form_works">
+<span class="sig-name descname"><span class="pre">is_login_form_works</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#LoginPage.is_login_form_works"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.LoginPage.is_login_form_works" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.LoginPage.is_logout_link_works">
+<span class="sig-name descname"><span class="pre">is_logout_link_works</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#LoginPage.is_logout_link_works"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.LoginPage.is_logout_link_works" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.LoginPage.is_title_matches">
+<span class="sig-name descname"><span class="pre">is_title_matches</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#LoginPage.is_title_matches"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.LoginPage.is_title_matches" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mycars_tests.page.RegisterPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mycars_tests.page.</span></span><span class="sig-name descname"><span class="pre">RegisterPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">driver</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#RegisterPage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.RegisterPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mycars_tests.page.BasePage" title="mycars_tests.page.BasePage"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePage</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.RegisterPage.is_register_form_works">
+<span class="sig-name descname"><span class="pre">is_register_form_works</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#RegisterPage.is_register_form_works"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.RegisterPage.is_register_form_works" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.page.RegisterPage.is_title_matches">
+<span class="sig-name descname"><span class="pre">is_title_matches</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/page.html#RegisterPage.is_title_matches"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.page.RegisterPage.is_title_matches" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mycars_tests.tests">
+<span id="mycars-tests-tests-module"></span><h2>mycars_tests.tests module<a class="headerlink" href="#module-mycars_tests.tests" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mycars_tests.tests.MJCarsTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mycars_tests.tests.</span></span><span class="sig-name descname"><span class="pre">MJCarsTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/tests.html#MJCarsTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.tests.MJCarsTest" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StaticLiveServerTestCase</span></code></p>
+<p>This class will include test methods neccessary to perform functional tests using Selenium web driver.
+All test cases are executed on Google Chrome.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.tests.MJCarsTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/tests.html#MJCarsTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.tests.MJCarsTest.setUp" title="Permalink to this definition"></a></dt>
+<dd><p>This method is called before every test function to set up any objects
+neccessary to perform a specified task.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.tests.MJCarsTest.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/tests.html#MJCarsTest.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.tests.MJCarsTest.tearDown" title="Permalink to this definition"></a></dt>
+<dd><p>This method is called after every test function to delete existing objects
+neccessary to perform a specified task.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.tests.MJCarsTest.test_cars_list_page">
+<span class="sig-name descname"><span class="pre">test_cars_list_page</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/tests.html#MJCarsTest.test_cars_list_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.tests.MJCarsTest.test_cars_list_page" title="Permalink to this definition"></a></dt>
+<dd><p>This is test method to verify if cars list page behaves as expected.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.tests.MJCarsTest.test_home_page">
+<span class="sig-name descname"><span class="pre">test_home_page</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/tests.html#MJCarsTest.test_home_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.tests.MJCarsTest.test_home_page" title="Permalink to this definition"></a></dt>
+<dd><p>This is test method to verify if home page behaves as expected.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.tests.MJCarsTest.test_login_page">
+<span class="sig-name descname"><span class="pre">test_login_page</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/tests.html#MJCarsTest.test_login_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.tests.MJCarsTest.test_login_page" title="Permalink to this definition"></a></dt>
+<dd><p>This is test method to verify if login page behaves as expected.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mycars_tests.tests.MJCarsTest.test_register_page">
+<span class="sig-name descname"><span class="pre">test_register_page</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mycars_tests/tests.html#MJCarsTest.test_register_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mycars_tests.tests.MJCarsTest.test_register_page" title="Permalink to this definition"></a></dt>
+<dd><p>This is test method to verify if register page behaves as expected.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mycars_tests">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mycars_tests" title="Permalink to this heading"></a></h2>
+<section id="htmxmodule">
+<h3>HtmxModule<a class="headerlink" href="#htmxmodule" title="Permalink to this heading"></a></h3>
+<p>This is a module which has views, urls, models, forms and utilities files necessary for htmx to work</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Maciej Jaroszewski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
