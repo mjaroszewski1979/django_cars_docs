@@ -1,0 +1,37 @@
+tests\_selenium package
+=======================
+
+Submodules
+----------
+
+tests\_selenium.locators module
+-------------------------------
+
+.. automodule:: tests_selenium.locators
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tests\_selenium.page module
+---------------------------
+
+.. automodule:: tests_selenium.page
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tests\_selenium.tests module
+----------------------------
+
+.. automodule:: tests_selenium.tests
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: tests_selenium
+   :members:
+   :undoc-members:
+   :show-inheritance:

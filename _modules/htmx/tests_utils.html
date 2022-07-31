@@ -70,9 +70,9 @@
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">get_max_order</span><span class="p">,</span> <span class="n">reorder</span>
 
 
-<div class="viewcode-block" id="UtilsTest"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_utils.UtilsTest">[docs]</a><span class="k">class</span> <span class="nc">UtilsTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+<div class="viewcode-block" id="UtilsTest"><a class="viewcode-back" href="../../htmx.html#htmx.tests_utils.UtilsTest">[docs]</a><span class="k">class</span> <span class="nc">UtilsTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
 
-<div class="viewcode-block" id="UtilsTest.setUp"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_utils.UtilsTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UtilsTest.setUp"><a class="viewcode-back" href="../../htmx.html#htmx.tests_utils.UtilsTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method is called before every test function to set up any objects</span>
 <span class="sd">        neccessary to perform a specified task. </span>
@@ -87,7 +87,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">audi</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="UtilsTest.tearDown"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_utils.UtilsTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UtilsTest.tearDown"><a class="viewcode-back" href="../../htmx.html#htmx.tests_utils.UtilsTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method is called after every test function to delete existing objects</span>
 <span class="sd">        neccessary to perform a specified task. </span>
@@ -96,7 +96,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">porshe</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">audi</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="UtilsTest.test_get_max_order_existing_cars"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_utils.UtilsTest.test_get_max_order_existing_cars">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_max_order_existing_cars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UtilsTest.test_get_max_order_existing_cars"><a class="viewcode-back" href="../../htmx.html#htmx.tests_utils.UtilsTest.test_get_max_order_existing_cars">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_max_order_existing_cars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if get_max_order function returns</span>
 <span class="sd">        expected value when as an input we pass logged-in user object with</span>
@@ -108,7 +108,7 @@
         <span class="n">result</span> <span class="o">=</span> <span class="n">get_max_order</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UtilsTest.test_get_max_order_no_cars"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_utils.UtilsTest.test_get_max_order_no_cars">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_max_order_no_cars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UtilsTest.test_get_max_order_no_cars"><a class="viewcode-back" href="../../htmx.html#htmx.tests_utils.UtilsTest.test_get_max_order_no_cars">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_max_order_no_cars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if get_max_order function returns</span>
 <span class="sd">        expected value when as an input we pass logged-in user object without</span>
@@ -118,7 +118,7 @@
         <span class="n">result</span> <span class="o">=</span> <span class="n">get_max_order</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UtilsTest.test_reorder_existing_cars"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_utils.UtilsTest.test_reorder_existing_cars">[docs]</a>    <span class="k">def</span> <span class="nf">test_reorder_existing_cars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UtilsTest.test_reorder_existing_cars"><a class="viewcode-back" href="../../htmx.html#htmx.tests_utils.UtilsTest.test_reorder_existing_cars">[docs]</a>    <span class="k">def</span> <span class="nf">test_reorder_existing_cars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if reorder function returns</span>
 <span class="sd">        expected value when as an input we pass logged-in user object with</span>
@@ -131,7 +131,7 @@
         <span class="n">audi</span> <span class="o">=</span> <span class="n">UserCars</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">audi</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UtilsTest.test_reorder_no_cars"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_utils.UtilsTest.test_reorder_no_cars">[docs]</a>    <span class="k">def</span> <span class="nf">test_reorder_no_cars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UtilsTest.test_reorder_no_cars"><a class="viewcode-back" href="../../htmx.html#htmx.tests_utils.UtilsTest.test_reorder_no_cars">[docs]</a>    <span class="k">def</span> <span class="nf">test_reorder_no_cars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if reorder function returns</span>
 <span class="sd">        expected value when as an input we pass logged-in user object without</span>

@@ -75,11 +75,11 @@
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">UserCars</span>
 
 
-<div class="viewcode-block" id="HomeView"><a class="viewcode-back" href="../../source/htmx.html#htmx.views.HomeView">[docs]</a><span class="k">class</span> <span class="nc">HomeView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+<div class="viewcode-block" id="HomeView"><a class="viewcode-back" href="../../htmx.html#htmx.views.HomeView">[docs]</a><span class="k">class</span> <span class="nc">HomeView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;HomeView Class will render index page.&quot;&quot;&quot;</span>
     
-<div class="viewcode-block" id="HomeView.get"><a class="viewcode-back" href="../../source/htmx.html#htmx.views.HomeView.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+<div class="viewcode-block" id="HomeView.get"><a class="viewcode-back" href="../../htmx.html#htmx.views.HomeView.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This function is responsible for handling HTTP GET requests.</span>
 
@@ -88,7 +88,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;index.html&#39;</span><span class="p">)</span></div></div>
 
-<div class="viewcode-block" id="RegisterView"><a class="viewcode-back" href="../../source/htmx.html#htmx.views.RegisterView">[docs]</a><span class="k">class</span> <span class="nc">RegisterView</span><span class="p">(</span><span class="n">FormView</span><span class="p">):</span>
+<div class="viewcode-block" id="RegisterView"><a class="viewcode-back" href="../../htmx.html#htmx.views.RegisterView">[docs]</a><span class="k">class</span> <span class="nc">RegisterView</span><span class="p">(</span><span class="n">FormView</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    RegisterView Class will render register page. It uses RegisterForm and it will</span>
@@ -99,17 +99,17 @@
     <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;register.html&#39;</span>
     <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="RegisterView.form_valid"><a class="viewcode-back" href="../../source/htmx.html#htmx.views.RegisterView.form_valid">[docs]</a>    <span class="k">def</span> <span class="nf">form_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+<div class="viewcode-block" id="RegisterView.form_valid"><a class="viewcode-back" href="../../htmx.html#htmx.views.RegisterView.form_valid">[docs]</a>    <span class="k">def</span> <span class="nf">form_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
         <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">form_valid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span></div></div>
 
-<div class="viewcode-block" id="Login"><a class="viewcode-back" href="../../source/htmx.html#htmx.views.Login">[docs]</a><span class="k">class</span> <span class="nc">Login</span><span class="p">(</span><span class="n">LoginView</span><span class="p">):</span>
+<div class="viewcode-block" id="Login"><a class="viewcode-back" href="../../htmx.html#htmx.views.Login">[docs]</a><span class="k">class</span> <span class="nc">Login</span><span class="p">(</span><span class="n">LoginView</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;LoginView Class will render login page.&quot;&quot;&quot;</span>
 
     <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;login.html&#39;</span></div>
 
-<div class="viewcode-block" id="CarList"><a class="viewcode-back" href="../../source/htmx.html#htmx.views.CarList">[docs]</a><span class="k">class</span> <span class="nc">CarList</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">ListView</span><span class="p">):</span>
+<div class="viewcode-block" id="CarList"><a class="viewcode-back" href="../../htmx.html#htmx.views.CarList">[docs]</a><span class="k">class</span> <span class="nc">CarList</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">ListView</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    CarListView Class will render cars page. In case of request</span>
@@ -125,12 +125,12 @@
     <span class="n">model</span> <span class="o">=</span> <span class="n">UserCars</span>
     <span class="n">context_object_name</span> <span class="o">=</span> <span class="s1">&#39;cars&#39;</span>
 
-<div class="viewcode-block" id="CarList.get_template_names"><a class="viewcode-back" href="../../source/htmx.html#htmx.views.CarList.get_template_names">[docs]</a>    <span class="k">def</span> <span class="nf">get_template_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CarList.get_template_names"><a class="viewcode-back" href="../../htmx.html#htmx.views.CarList.get_template_names">[docs]</a>    <span class="k">def</span> <span class="nf">get_template_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">htmx</span><span class="p">:</span>
             <span class="k">return</span> <span class="s1">&#39;partials/car_list_elements.html&#39;</span>
         <span class="k">return</span> <span class="s1">&#39;cars.html&#39;</span></div>
         
-<div class="viewcode-block" id="CarList.get_queryset"><a class="viewcode-back" href="../../source/htmx.html#htmx.views.CarList.get_queryset">[docs]</a>    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CarList.get_queryset"><a class="viewcode-back" href="../../htmx.html#htmx.views.CarList.get_queryset">[docs]</a>    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">UserCars</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;car&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span></div></div>
 
 

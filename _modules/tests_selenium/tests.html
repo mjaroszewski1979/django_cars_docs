@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mycars_tests.tests &mdash; MJCars 0.1 documentation</title>
+  <title>tests_selenium.tests &mdash; MJCars 0.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -52,7 +52,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>mycars_tests.tests</li>
+      <li>tests_selenium.tests</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -61,7 +61,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for mycars_tests.tests</h1><div class="highlight"><pre>
+  <h1>Source code for tests_selenium.tests</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">django.contrib.staticfiles.testing</span> <span class="kn">import</span> <span class="n">StaticLiveServerTestCase</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
 <span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
@@ -70,14 +70,14 @@
        
 
 
-<div class="viewcode-block" id="MJCarsTest"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest">[docs]</a><span class="k">class</span> <span class="nc">MJCarsTest</span><span class="p">(</span><span class="n">StaticLiveServerTestCase</span><span class="p">):</span>
+<div class="viewcode-block" id="MJCarsTest"><a class="viewcode-back" href="../../tests_selenium.html#tests_selenium.tests.MJCarsTest">[docs]</a><span class="k">class</span> <span class="nc">MJCarsTest</span><span class="p">(</span><span class="n">StaticLiveServerTestCase</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This class will include test methods neccessary to perform functional tests using Selenium web driver.</span>
 <span class="sd">    All test cases are executed on Google Chrome.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-<div class="viewcode-block" id="MJCarsTest.setUp"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="MJCarsTest.setUp"><a class="viewcode-back" href="../../tests_selenium.html#tests_selenium.tests.MJCarsTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method is called before every test function to set up any objects</span>
 <span class="sd">        neccessary to perform a specified task. </span>
@@ -90,7 +90,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">car</span> <span class="o">=</span> <span class="n">Car</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">producer</span><span class="o">=</span><span class="s1">&#39;porshe&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">car</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="MJCarsTest.tearDown"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="MJCarsTest.tearDown"><a class="viewcode-back" href="../../tests_selenium.html#tests_selenium.tests.MJCarsTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method is called after every test function to delete existing objects</span>
 <span class="sd">        neccessary to perform a specified task. </span>
@@ -100,7 +100,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">car</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="MJCarsTest.test_home_page"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest.test_home_page">[docs]</a>    <span class="k">def</span> <span class="nf">test_home_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="MJCarsTest.test_home_page"><a class="viewcode-back" href="../../tests_selenium.html#tests_selenium.tests.MJCarsTest.test_home_page">[docs]</a>    <span class="k">def</span> <span class="nf">test_home_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if home page behaves as expected.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -111,7 +111,7 @@
         <span class="k">assert</span> <span class="n">home_page</span><span class="o">.</span><span class="n">is_register_link_works</span><span class="p">()</span>
         <span class="k">assert</span> <span class="n">home_page</span><span class="o">.</span><span class="n">is_login_link_works</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="MJCarsTest.test_register_page"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest.test_register_page">[docs]</a>    <span class="k">def</span> <span class="nf">test_register_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="MJCarsTest.test_register_page"><a class="viewcode-back" href="../../tests_selenium.html#tests_selenium.tests.MJCarsTest.test_register_page">[docs]</a>    <span class="k">def</span> <span class="nf">test_register_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if register page behaves as expected.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -120,7 +120,7 @@
         <span class="k">assert</span> <span class="n">register_page</span><span class="o">.</span><span class="n">is_title_matches</span><span class="p">()</span>
         <span class="k">assert</span> <span class="n">register_page</span><span class="o">.</span><span class="n">is_register_form_works</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="MJCarsTest.test_login_page"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest.test_login_page">[docs]</a>    <span class="k">def</span> <span class="nf">test_login_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="MJCarsTest.test_login_page"><a class="viewcode-back" href="../../tests_selenium.html#tests_selenium.tests.MJCarsTest.test_login_page">[docs]</a>    <span class="k">def</span> <span class="nf">test_login_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if login page behaves as expected.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -130,7 +130,7 @@
         <span class="k">assert</span> <span class="n">login_page</span><span class="o">.</span><span class="n">is_login_form_works</span><span class="p">()</span>
         <span class="k">assert</span> <span class="n">login_page</span><span class="o">.</span><span class="n">is_logout_link_works</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="MJCarsTest.test_cars_list_page"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.tests.MJCarsTest.test_cars_list_page">[docs]</a>    <span class="k">def</span> <span class="nf">test_cars_list_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="MJCarsTest.test_cars_list_page"><a class="viewcode-back" href="../../tests_selenium.html#tests_selenium.tests.MJCarsTest.test_cars_list_page">[docs]</a>    <span class="k">def</span> <span class="nf">test_cars_list_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if cars list page behaves as expected.</span>
 <span class="sd">        &quot;&quot;&quot;</span>

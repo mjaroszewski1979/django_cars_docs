@@ -1,10 +1,10 @@
-.. mj documentation master file, created by
-   sphinx-quickstart on Thu Jul 28 22:26:47 2022.
+.. MJ Cars documentation master file, created by
+   sphinx-quickstart on Sun Jul 31 17:44:26 2022.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to mj's documentation!
-==============================
+Welcome to MJ Cars's documentation!
+===================================
 
 .. toctree::
    :maxdepth: 2

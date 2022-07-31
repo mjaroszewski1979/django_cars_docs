@@ -70,13 +70,13 @@
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Car</span><span class="p">,</span> <span class="n">UserCars</span><span class="p">,</span> <span class="n">User</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
-<div class="viewcode-block" id="ViewsTest"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest">[docs]</a><span class="k">class</span> <span class="nc">ViewsTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest">[docs]</a><span class="k">class</span> <span class="nc">ViewsTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This class will include test methods neccessary to check if views.py file</span>
 <span class="sd">    behaves as expected.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-<div class="viewcode-block" id="ViewsTest.setUp"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.setUp"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method is called before every test function to set up any objects</span>
 <span class="sd">        neccessary to perform a specified task. </span>
@@ -89,7 +89,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">car</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="ViewsTest.tearDown"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.tearDown"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method is called after every test function to delete existing objects</span>
 <span class="sd">        neccessary to perform a specified task. </span>
@@ -97,7 +97,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">car</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="ViewsTest.test_index_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.test_index_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_index_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.test_index_url_is_resolved"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.test_index_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_index_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
 <span class="sd">        given url parameter.</span>
@@ -105,7 +105,7 @@
         <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">view_class</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">HomeView</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ViewsTest.test_index_get"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.test_index_get">[docs]</a>    <span class="k">def</span> <span class="nf">test_index_get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.test_index_get"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.test_index_get">[docs]</a>    <span class="k">def</span> <span class="nf">test_index_get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if acquired response to a get request has correct status code,</span>
 <span class="sd">        html title content and uses appropriate template.</span>
@@ -114,7 +114,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">assertContains</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;My Rides | Home Page&#39;</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;index.html&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ViewsTest.test_register_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.test_register_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_register_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.test_register_url_is_resolved"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.test_register_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_register_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
 <span class="sd">        given url parameter.</span>
@@ -122,7 +122,7 @@
         <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;register&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">view_class</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">RegisterView</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ViewsTest.test_register_get"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.test_register_get">[docs]</a>    <span class="k">def</span> <span class="nf">test_register_get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.test_register_get"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.test_register_get">[docs]</a>    <span class="k">def</span> <span class="nf">test_register_get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if acquired response to a get request has correct status code,</span>
 <span class="sd">        html title content and uses appropriate template.</span>
@@ -131,7 +131,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">assertContains</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;My Rides | Register&#39;</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;register.html&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ViewsTest.test_register_post"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.test_register_post">[docs]</a>    <span class="k">def</span> <span class="nf">test_register_post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.test_register_post"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.test_register_post">[docs]</a>    <span class="k">def</span> <span class="nf">test_register_post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if acquired response to a post request has correct status code,</span>
 <span class="sd">        html title content and uses appropriate template.</span>
@@ -145,7 +145,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">assertContains</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;My Rides | Login&#39;</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ViewsTest.test_login_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.test_login_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_login_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.test_login_url_is_resolved"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.test_login_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_login_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
 <span class="sd">        given url parameter.</span>
@@ -153,7 +153,7 @@
         <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">view_class</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">Login</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ViewsTest.test_login_get"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.test_login_get">[docs]</a>    <span class="k">def</span> <span class="nf">test_login_get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.test_login_get"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.test_login_get">[docs]</a>    <span class="k">def</span> <span class="nf">test_login_get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if acquired response to a get request has correct status code,</span>
 <span class="sd">        html title content and uses appropriate template.</span>
@@ -162,7 +162,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">assertContains</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;My Rides | Login&#39;</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ViewsTest.test_login_post"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.test_login_post">[docs]</a>    <span class="k">def</span> <span class="nf">test_login_post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.test_login_post"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.test_login_post">[docs]</a>    <span class="k">def</span> <span class="nf">test_login_post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if acquired response to a post request has correct status code,</span>
 <span class="sd">        html title content and uses appropriate template.</span>
@@ -175,7 +175,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">assertContains</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;My Rides | Login&#39;</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ViewsTest.test_logout_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.test_logout_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_logout_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.test_logout_url_is_resolved"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.test_logout_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_logout_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
 <span class="sd">        given url parameter.</span>
@@ -183,7 +183,7 @@
         <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;logout&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">view_class</span><span class="p">,</span> <span class="n">LogoutView</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ViewsTest.test_car_list_url_is_resolved"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.test_car_list_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_car_list_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.test_car_list_url_is_resolved"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.test_car_list_url_is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">test_car_list_url_is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if appropriate view name is retrieved from a</span>
 <span class="sd">        given url parameter.</span>
@@ -192,7 +192,7 @@
         <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;car_list&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">view_class</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">CarList</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ViewsTest.test_car_list_get_authenticated_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.test_car_list_get_authenticated_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_car_list_get_authenticated_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.test_car_list_get_authenticated_user"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.test_car_list_get_authenticated_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_car_list_get_authenticated_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if acquired response to a get request made by authenticated user</span>
 <span class="sd">        has correct status code, html title content and uses appropriate template.</span>
@@ -202,7 +202,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">assertContains</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;My Rides | Cars List&#39;</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;cars.html&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ViewsTest.test_car_list_get_anonymous_user"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.test_car_list_get_anonymous_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_car_list_get_anonymous_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.test_car_list_get_anonymous_user"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.test_car_list_get_anonymous_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_car_list_get_anonymous_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if acquired response to a get request has correct status code.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -210,7 +210,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ViewsTest.test_car_list_context"><a class="viewcode-back" href="../../source/htmx.html#htmx.tests_views.ViewsTest.test_car_list_context">[docs]</a>    <span class="k">def</span> <span class="nf">test_car_list_context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ViewsTest.test_car_list_context"><a class="viewcode-back" href="../../htmx.html#htmx.tests_views.ViewsTest.test_car_list_context">[docs]</a>    <span class="k">def</span> <span class="nf">test_car_list_context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is test method to verify if acquired response to a get request made by authenticated user</span>
 <span class="sd">        has correct context dictionary passed to the template.</span>

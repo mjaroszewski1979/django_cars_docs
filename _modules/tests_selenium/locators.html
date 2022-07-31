@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mycars_tests.locators &mdash; MJCars 0.1 documentation</title>
+  <title>tests_selenium.locators &mdash; MJCars 0.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -52,7 +52,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>mycars_tests.locators</li>
+      <li>tests_selenium.locators</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -61,10 +61,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for mycars_tests.locators</h1><div class="highlight"><pre>
+  <h1>Source code for tests_selenium.locators</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
 
-<div class="viewcode-block" id="HomePageLocators"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.locators.HomePageLocators">[docs]</a><span class="k">class</span> <span class="nc">HomePageLocators</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="HomePageLocators"><a class="viewcode-back" href="../../tests_selenium.html#tests_selenium.locators.HomePageLocators">[docs]</a><span class="k">class</span> <span class="nc">HomePageLocators</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This class will include web element locators neccessary to perform home page test automation process.</span>
 <span class="sd">    :type name: ChromeDriver interface.</span>
@@ -76,7 +76,7 @@
     <span class="n">LOGIN_LINK</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">LINK_TEXT</span><span class="p">,</span> <span class="s1">&#39;LOGIN&#39;</span><span class="p">)</span>
     <span class="n">HOME_LINK</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">LINK_TEXT</span><span class="p">,</span> <span class="s1">&#39;RIDES BY MJ&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RegisterPageLocators"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.locators.RegisterPageLocators">[docs]</a><span class="k">class</span> <span class="nc">RegisterPageLocators</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="RegisterPageLocators"><a class="viewcode-back" href="../../tests_selenium.html#tests_selenium.locators.RegisterPageLocators">[docs]</a><span class="k">class</span> <span class="nc">RegisterPageLocators</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This class will include web element locators neccessary to perform register page test automation process.</span>
 <span class="sd">    :type name: ChromeDriver interface.</span>
@@ -88,7 +88,7 @@
     <span class="n">PASSWORD2_FIELD</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s1">&#39;password2&#39;</span><span class="p">)</span>
     <span class="n">SUBMIT_BUTTON</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@class=&#39;register&#39;]//section//ul[@class=&#39;actions&#39;]//input[@class=&#39;primary&#39;]&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="LoginPageLocators"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.locators.LoginPageLocators">[docs]</a><span class="k">class</span> <span class="nc">LoginPageLocators</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="LoginPageLocators"><a class="viewcode-back" href="../../tests_selenium.html#tests_selenium.locators.LoginPageLocators">[docs]</a><span class="k">class</span> <span class="nc">LoginPageLocators</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This class will include web element locators neccessary to perform login page test automation process.</span>
 <span class="sd">    :type name: ChromeDriver interface.</span>
@@ -100,7 +100,7 @@
     <span class="n">LOGIN_BUTTON</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@class=&#39;login&#39;]//section//ul[@class=&#39;actions&#39;]//input[@class=&#39;primary&#39;]&quot;</span><span class="p">)</span>
     <span class="n">LOGOUT_LINK</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">LINK_TEXT</span><span class="p">,</span> <span class="s1">&#39;LOGOUT&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CarsListPageLocators"><a class="viewcode-back" href="../../source/mycars_tests.html#mycars_tests.locators.CarsListPageLocators">[docs]</a><span class="k">class</span> <span class="nc">CarsListPageLocators</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="CarsListPageLocators"><a class="viewcode-back" href="../../tests_selenium.html#tests_selenium.locators.CarsListPageLocators">[docs]</a><span class="k">class</span> <span class="nc">CarsListPageLocators</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This class will include web element locators neccessary to perform cars list page test automation process.</span>
 <span class="sd">    :type name: ChromeDriver interface.</span>
